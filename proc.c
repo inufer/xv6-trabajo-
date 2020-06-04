@@ -532,3 +532,45 @@ procdump(void)
     cprintf("\n");
   }
 }
+
+//Current process status
+int
+cps()
+{
+  struct proc *p;
+
+  //Enable interrupts on this procesor
+  sti();
+
+  //Loop over process table looking for a process with pid.
+  acquire(&ptable.lock);
+  cprintf("name \t pid \t state \t \n");
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+      if( p->state == SLEEPING )
+	cprintf("%s \t %d \t SLEEPING \t \n ", p->name, p->pid);
+      else if ( p->state == RUNNING )
+	cprintf("%s \t %d \t RUNNING \t \n ", p->name, p->pid);
+      else if ( p->state == RUNNABLE )
+	cprintf("%s \t %d \t RUNNABLE \t \n", p->name, p->pid);
+  }
+
+  release(&ptable.lock);
+
+  return 22;
+}
+
+
+//contador de llamada al sistema
+void
+csc()
+{
+	int aux = 0;
+	cprintf(" #proc\tsyscall\ttimes\n");
+	for(int i=0; i<sizeof(syscls)/sizeof(syscls[0]); i++){
+			if(syscls[i]>0){
+			  cprintf("   %d\t%s:\t  %d\n", i+1, syscls_names[i], syscls[i]);
+			aux += syscls[i];}
+		}
+    cprintf("\t[Total]  [%d]\n", aux);
+}
+

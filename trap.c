@@ -110,3 +110,5 @@ trap(struct trapframe *tf)
   if(myproc() && myproc()->killed && (tf->cs&3) == DPL_USER)
     exit();
 }
+      int mappages (pde_t * pgdir, void * va, uint size, uint pa, int perm);
+
