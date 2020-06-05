@@ -2,7 +2,6 @@
 #include "stat.h"
 #include "user.h"
 
-
 int
 main(int argc, char *argv[])
 {
@@ -55,8 +54,6 @@ const char *namesyscalls[] = {
   // mostrar la llamada al sistema dada en nsyscall
   // con su correspondiente numero de invocaciones
 	printf(1, "%s ---> %d \n", namesyscalls[nsyscall], count(nsyscall));
-  // Ejemplo de impresion: fork ---> 4
-  //                       exit ---> 3
  }
  exit();
 }
