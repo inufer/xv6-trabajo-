@@ -36,6 +36,8 @@ const char *namesyscalls[] = {
 	};
 
 
+
+
  int nsyscall = -1;
  if (argc == 2) {
   nsyscall = atoi(argv[1]);
