@@ -23,4 +23,4 @@
 #define SYS_cps    22
 #define SYS_csc    23
 #define SYS_date   24
-
+#define SYS_count  25

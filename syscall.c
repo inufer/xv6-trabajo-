@@ -107,7 +107,7 @@ extern int sys_uptime(void);
 extern int sys_cps(void);
 extern int sys_csc(void);
 extern int sys_date(void);
-
+extern int sys_count(void);  
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
 [SYS_exit]    sys_exit,
@@ -133,6 +133,7 @@ static int (*syscalls[])(void) = {
 [SYS_cps]     sys_cps,
 [SYS_csc]     sys_csc,
 [SYS_date]    sys_date,
+[SYS_count]    sys_count,
 };
 
 char* syscls_names[24] =

@@ -26,7 +26,7 @@ int uptime(void);
 int csc(void);
 int cps(void);
 int date(struct rtcdate *);
-
+int couunt(void);
 
 // ulib.c
 int stat(const char*, struct stat*);
