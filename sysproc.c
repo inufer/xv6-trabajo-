@@ -112,3 +112,10 @@ sys_csc(void)
 }
 
 
+int
+sys_counter(void)
+{
+  int num;
+  argint(0, &num);
+  return counter(num);
+}

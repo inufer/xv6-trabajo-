@@ -14,14 +14,13 @@ main(int argc, char *argv[])
  if (nsyscall == -1) {
   // mostrar todas las llamadas al sistema
   // con su correspondiente numero de invocaciones
- //count(0);
-
+    counter(0);
  }
  else
  {
   // mostrar la llamada al sistema dada en nsyscall
   // con su correspondiente numero de invocaciones
-//  count(nsyscall);
+   counter(nsyscall);
 }
 exit();
 }

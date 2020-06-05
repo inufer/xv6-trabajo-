@@ -83,6 +83,32 @@ argstr(int n, char **pp)
   return fetchstr(addr, pp);
 }
 
+extern int syschdir;
+extern int sysclose;
+extern int sysdup;
+extern int sysexec;
+extern int sysexit;  
+extern int sysfork;
+extern int sysfstat;
+extern int sysgetpid;
+extern int syskill;
+extern int syslink;
+extern int sysmkdir;
+extern int sysmknod;
+extern int sysopen;
+extern int syspipe;
+extern int sysread;
+extern int syssbrk;
+extern int syssleep;    
+extern int sysunlink;
+extern int syswait;
+extern int syswrite;
+extern int sysuptime;
+extern int syscps;                                        
+extern int syscsc;
+extern int sysdate;
+extern int syscounter;
+
 extern int sys_chdir(void);
 extern int sys_close(void);
 extern int sys_dup(void);
@@ -107,7 +133,8 @@ extern int sys_uptime(void);
 extern int sys_cps(void);
 extern int sys_csc(void);
 extern int sys_date(void);
-extern int sys_count(void);  
+extern int sys_counter(void);
+
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
 [SYS_exit]    sys_exit,
@@ -133,7 +160,7 @@ static int (*syscalls[])(void) = {
 [SYS_cps]     sys_cps,
 [SYS_csc]     sys_csc,
 [SYS_date]    sys_date,
-[SYS_count]    sys_count,
+[SYS_counter]    sys_counter,
 };
 
 char* syscls_names[24] =
@@ -162,6 +189,7 @@ char* syscls_names[24] =
  "cps",
  "csc"
  "date",
+"counter",
 };
 
 
@@ -186,6 +214,86 @@ syscall(void)
 
   num = curproc->tf->eax;
   syscls[num-1]++;//cont
+
+ switch(num)
+{
+ case '1':
+  syschdir++;
+  break;
+ case '2':
+  sysclose++;
+  break;
+ case '3':
+  sysdup++;
+  break;
+ case '4':
+  sysexec++;
+  break;
+ case '5':
+  sysexit++;
+  break;
+ case '6':
+  sysfork++;
+  break;
+ case '7':
+  sysfstat++;
+  break;
+ case '8':
+  sysgetpid++;
+  break;
+ case '9':
+  syskill++;
+  break;
+ case 10:
+  syslink++;
+  break;
+ case 11:
+  sysmkdir++;
+  break;
+ case 12:
+  sysmknod++;
+  break;
+ case 13:
+  sysopen++;
+  break;
+ case 14:
+  syspipe++;
+  break;
+ case 15:
+  sysread++;
+  break;
+ case 16:
+  syssbrk++;
+  break;
+ case 17:
+  syssleep++;
+  break;
+ case 18:
+  sysunlink++;
+  break;
+ case 19:
+  syswait++;
+  break;
+ case 20:
+  syswrite++;
+  break;
+ case 21:
+  sysuptime++;
+  break;
+ case 22:
+  syscps++;
+  break;
+ case 23:
+  syscsc++;
+  break;
+ case 24:
+  sysdate++;
+  break;
+ case 25:
+ syscounter++;
+ break;
+}
+
   if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
     curproc->tf->eax = syscalls[num]();
   } else {
