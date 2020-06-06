@@ -1,3 +1,8 @@
+MARIA FERNANDA ARROYO (201740443)
+JUAN CAMILO ROSERO (201746848)
+JOSE DAVID ERAZO (201742505)
+
+
 Proyecto sistemas operativos
 
 Para la realización del proyecto se tomaron en cuenta algunos repositorios a manera de guia y algunos videos que se anexaran acontinuación.
@@ -19,18 +24,25 @@ Mediante la implementación del comando uptime, en el archivo uptime.c, se pudo 
 #include "types.h"
 #include "user.h"
 
+
+#include "types.h"
+#include "user.h"
+
 int
 main (int argc, char *argv[])
 {
         int utime;
-        utime = uptime();
+        utime = (60*uptime()/atoi(argv[1]));
         printf(1, "up %d ticks\n", utime);
         exit();
 }
 
+
+
 6.1.3. Escriba el comando date
 
 Tomando como base el algoritmo implementado por el docente, se desarrollo el codigo base para imprimir la hora en el sistema
+
 
 
 #include "types.h"
@@ -43,12 +55,19 @@ main(int argc, char *argv[])
 {
   struct rtcdate r;
 
-  if (date(&r)) {
+  if (date(&r))
+  {
         printf(2, "date failed\n");
         exit();
   }
-        printf(1,"La hora actual es %d:%d:%d",r.hour,r.minute,r.s$
+   else
+{
+        printf(1,"La hora actual es %d:%d:%d\n",r.hour,r.minute,r$
 }
+exit();
+}
+
+
 
 
 
@@ -64,19 +83,27 @@ una llamada al sistema
 int
 main(int argc, char *argv[])
 {
+
  int nsyscall = -1;
  if (argc == 2) {
   nsyscall = atoi(argv[1]);
  }
+
  if (nsyscall == -1) {
   // mostrar todas las llamadas al sistema
   // con su correspondiente numero de invocaciones
- } else {
+    count(0);
+ }
+ else
+ {
   // mostrar la llamada al sistema dada en nsyscall
   // con su correspondiente numero de invocaciones
- }
- exit();
+   count(nsyscall);
 }
+exit();
+}
+
+
 
 
 
