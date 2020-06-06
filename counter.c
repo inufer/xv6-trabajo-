@@ -1,3 +1,4 @@
+
 #include "types.h"
 #include "stat.h"
 #include "user.h"
@@ -14,13 +15,13 @@ main(int argc, char *argv[])
  if (nsyscall == -1) {
   // mostrar todas las llamadas al sistema
   // con su correspondiente numero de invocaciones
-    counter(0);
+    count(0);
  }
  else
  {
   // mostrar la llamada al sistema dada en nsyscall
   // con su correspondiente numero de invocaciones
-   counter(nsyscall);
+   count(nsyscall);
 }
 exit();
 }

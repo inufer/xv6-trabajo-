@@ -12,36 +12,38 @@ struct {
   struct proc proc[NPROC];
 } ptable;
 
+
 static struct proc *initproc;
-
-
-int syschdir =0;
-int sysclose =0;
-int sysdup =0;                                                                             extern int syschdir;                                                         extern int sysclose;                                                         extern int sysdup;
-int sysexec= 0;
-int sysexit= 0;
-int sysfork= 0;
-int sysfstat= 0;
-int sysgetpid= 0;
-int syskill= 0;
-int syslink= 0;
-int sysmkdir= 0;
-int sysmknod= 0;
-int sysopen= 0;
-int syspipe= 0;
-int sysread= 0;
-int syssbrk   = 0;
-int syssleep;
-int sysunlink= 0;
-int syswait= 0;
-int syswrite= 0;
-int sysuptime= 0;
-int syscps= 0;
-int syscsc= 0;
-int sysdate= 0;
-int syscounter = 0;            
+int syschdir = 0;
+int sysclose = 0;
+int sysdup = 0;
+int sysexec = 0;
+int sysexit = 0;
+int sysfork = 0;
+int sysfstat = 0;
+int sysgetpid = 0;
+int syskill = 0;
+int syslink = 0;
+int sysmkdir = 0;
+int sysmknod = 0;
+int sysopen = 0;
+int syspipe = 0;
+int sysread = 0;
+int syssbrk = 0;
+int syssleep = 0;
+int sysunlink = 0;
+int syswait = 0;
+int syswrite = 0;
+int sysuptime = 0;
+int syscps = 0;
+int syscsc = 0;
+int sysdate =0;
+int syscount =0;
 
 int nextpid = 1;
+
+
+
 extern void forkret(void);
 extern void trapret(void);
 
@@ -602,115 +604,113 @@ csc()
 }
 
 int
-counter(int llamada)
-{
-  switch(llamada)
-{
- case '0':
- cprintf("chdir: %d\n", syschdir);
- cprintf("close: %d\n",  sysclose);
- cprintf("dup: %d\n", sysdup);
- cprintf("exec: %d\n", sysexec);
- cprintf("exit: %d\n", sysexit);
- cprintf("fork: %d\n", sysfork);
- cprintf("fstat: %d\n", sysfstat);
- cprintf("getpid: %d\n", sysgetpid);
- cprintf("kill: %d\n", syskill);
- cprintf("link: %d\n", syslink);
- cprintf("mkdir: %d\n", sysmkdir);
- cprintf("mknod: %d\n", sysmknod);
- cprintf("open: %d\n", sysopen);
- cprintf("pipe: %d\n", syspipe);
- cprintf("read: %d\n", sysread);
- cprintf("sbrk: %d\n", syssbrk);
- cprintf("sleep: %d\n", syssleep);
- cprintf("unlink: %d\n", sysunlink);
- cprintf("wait: %d\n", syswait);
- cprintf("write: %d\n", syswrite);
- cprintf("uptime: %d\n", sysuptime);
- cprintf("cps: %d\n", syscps);
- cprintf("csc: %d\n", syscsc);
- cprintf("date: %d\n",sysdate );
- cprintf("counter: %d\n", syscounter );
+count(int llamada)
+{  
+  if(llamada == 0)
+  {
+ 	cprintf("chdir: %d\n", syschdir);
+	cprintf("close: %d\n", sysclose);
+	cprintf("dup: %d\n", sysdup);
+	cprintf("exec: %d\n", sysexec);
+	cprintf("exit: %d\n", sysexit);
+	cprintf("fork: %d\n", sysfork);
+	cprintf("fstat: %d\n", sysfstat);
+	cprintf("getpid: %d\n", sysgetpid);
+	cprintf("kill: %d\n", syskill);
+	cprintf("link: %d\n", syslink);
+	cprintf("mkdir: %d\n", sysmkdir);
+	cprintf("mknod: %d\n", sysmknod);
+	cprintf("open: %d\n", sysopen);
+	cprintf("pipe: %d\n", syspipe);
+	cprintf("read: %d\n", sysread);
+	cprintf("sbrk: %d\n", syssbrk);
+	cprintf("sleep: %d\n", syssleep);
+	cprintf("unlink: %d\n", sysunlink);
+	cprintf("wait: %d\n", syswait);
+	cprintf("write: %d\n", syswrite);
+	cprintf("uptime: %d\n", sysuptime);
+  	cprintf("cps: %d\n", syscps);
+  	cprintf("csc: %d\n", syscsc);
+	cprintf("date: %d\n", sysdate);
+        cprintf("count: %d\n", syscount);
 
- case '1':
-  cprintf("chdir: %d\n", syschdir);
-  break;
- case '2':
-  cprintf("close: %d\n",  sysclose);   
-  break;
- case '3':
-  cprintf("dup: %d\n", sysdup);
-  break;
- case '4':
-    cprintf("exec: %d\n", sysexec);     
-  break; 
-  case '5':
-  cprintf("exit: %d\n", sysexit);   
-  break;
- case '6':
-  cprintf("fork: %d\n", sysfork);
-  break;
- case '7':
-   cprintf("fstat: %d\n", sysfstat);   
-  break;
- case '8':
-  cprintf("getpid: %d\n", sysgetpid);       
-  break;                                                       
- case '9':
-  cprintf("kill: %d\n", syskill);  
-  break;
- case 10:
-   cprintf("link: %d\n", syslink);    
-   break;         
- case 11:
-  cprintf("mkdir: %d\n", sysmkdir);
-  break;
- case 12:
-  cprintf("mknod: %d\n", sysmknod);    
-  break;
- case 13:
-   cprintf("open: %d\n", sysopen);
-  break;
- case 14:
-  cprintf("pipe: %d\n", syspipe);   
-  break;
- case 15:
-   cprintf("read: %d\n", sysread); 
-  break;
- case 16:
-   cprintf("sbrk: %d\n", syssbrk); 
-  break;
- case 17:
-  cprintf("sleep: %d\n", syssleep);    
-  break;
-  case 18:   
-  cprintf("unlink: %d\n", sysunlink);
-  break;
- case 19:
-  cprintf("wait: %d\n", syswait);    
-  break;
- case 20:
-  cprintf("write: %d\n", syswrite);  
-  break;
- case 21:
-  cprintf("uptime: %d\n", sysuptime);      
-  break;
- case 22:
-  cprintf("cps: %d\n", syscps);    
-  break;
- case 23:
-    cprintf("csc: %d\n", syscsc);         
-  break;
- case 24:
-   cprintf("date: %d\n",sysdate );  
-  break;
- case 25:
-  cprintf("counter: %d\n", syscounter );  
- break;
- default:
-  cprintf("error");
-}
-return 0;
+  }else if(llamada == 1)
+  {
+    cprintf("chdir: %d\n", syschdir);
+	}else if(llamada == 2)
+  {
+    cprintf("close: %d\n", sysclose);
+	}else if(llamada == 3)
+  {
+    cprintf("dup: %d\n", sysdup);
+	}else if(llamada == 4)
+  {
+    cprintf("exec: %d\n", sysexec);
+	}else if(llamada == 5)
+  {
+    cprintf("exit: %d\n", sysexit);
+	}else if(llamada == 6)
+  {
+    cprintf("fork: %d\n", sysfork);
+	}else if(llamada == 7)
+  {
+    cprintf("fstat: %d\n", sysfstat);
+	}else if(llamada == 8)
+  {
+    cprintf("getpid: %d\n", sysgetpid);
+	}else if(llamada == 9)
+  {
+    cprintf("kill: %d\n", syskill);
+	}else if(llamada == 10)
+  {
+    cprintf("link: %d\n", syslink);
+	}else if(llamada == 11)
+  {
+    cprintf("mkdir: %d\n", sysmkdir);
+	}else if(llamada == 12)
+  {
+    cprintf("mknod: %d\n", sysmknod);
+	}else if(llamada == 13)
+  {
+    cprintf("open: %d\n", sysopen);
+	}else if(llamada == 14)
+  {
+    cprintf("pipe: %d\n", syspipe);
+	}else if(llamada == 15)
+  {
+    cprintf("read: %d\n", sysread);
+	}else if(llamada == 16)
+  {
+     cprintf("sbrk: %d\n", syssbrk);
+	}else if(llamada == 17)
+  {
+     cprintf("sleep: %d\n", syssleep);
+	}else if(llamada == 18)
+  {
+     cprintf("unlink: %d\n", sysunlink);
+	}else if(llamada == 19)
+  {
+     cprintf("wait: %d\n", syswait);
+	}else if(llamada == 20)
+  {
+     cprintf("write: %d\n", syswrite);
+	}else if(llamada == 21)
+  {
+     cprintf("uptime: %d\n", sysuptime);
+	}else if(llamada == 22)
+  {
+     cprintf("cps: %d\n", syscps);
+	}else if(llamada == 23)
+  {
+     cprintf("csc: %d\n", syscsc);
+	}
+else if(llamada == 24)
+  {
+     cprintf("date: %d\n", sysdate);
+        }else if(llamada == 25)
+  {
+     cprintf("count: %d\n", syscount);
+       }
 
+   return 0; 
 }
